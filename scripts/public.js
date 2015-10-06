@@ -99,6 +99,6 @@ var CommentForm = React.createClass({
 });
 
 React.render(
-  <Comment url="datas.json" pollInterval="3000" />,
+  <Comment url="datas.json" pollInterval="3d000" />,
   document.getElementById('content')
 );

@@ -1,5 +1,5 @@
 
-var Comment = React.createClass({
+var Comment = React.createClass({displayName: "Comment",
 
   getInitialState: function() {
     return {data: []}
@@ -44,33 +44,33 @@ var Comment = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-        <CommentList data={this.state.data} />
-      </div>  
+      React.createElement("div", null, 
+        React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
+        React.createElement(CommentList, {data: this.state.data})
+      )  
     );
   }
 });
 
-var CommentList = React.createClass({
+var CommentList = React.createClass({displayName: "CommentList",
   render: function() {
     var commentNodes = this.props.data.map(function (comment) {
       return (
-        <Comment author={comment.author}>
-          {comment.text}
-        </Comment>
+        React.createElement(Comment, {author: comment.author}, 
+          comment.text
+        )
       );
     });
     return (
-      <div className="commentList">
-        {commentNodes}
-      </div>
+      React.createElement("div", {className: "commentList"}, 
+        commentNodes
+      )
     );
   }
 });
 
 
-var CommentForm = React.createClass({
+var CommentForm = React.createClass({displayName: "CommentForm",
 
   handleSubmit: function(e) {
     e.preventDefault();
@@ -88,11 +88,11 @@ var CommentForm = React.createClass({
 
   render: function() {
     return (
-      <form className="commentForm" onSubmit={this.handleSubmit}>
-        <input type="text" ref="login" placeholder="Your name: "/>
-        <input type="text" ref="password" placeholder="Your password: "/>
-        <input type="submit" value="Post" />
-      </form>
+      React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit}, 
+        React.createElement("input", {type: "text", ref: "login", placeholder: "Your name: "}), 
+        React.createElement("input", {type: "text", ref: "password", placeholder: "Your password: "}), 
+        React.createElement("input", {type: "submit", value: "Post"})
+      )
     );
 
   }
@@ -100,9 +100,7 @@ var CommentForm = React.createClass({
 
 var onLoad= function() {
   React.render(
-    <Comment url="datas.json" pollInterval="3000" />,
+    React.createElement(Comment, {url: "datas.json", pollInterval: "3000"}),
     document.getElementById('content')
   );
 }
-
-onLoad();

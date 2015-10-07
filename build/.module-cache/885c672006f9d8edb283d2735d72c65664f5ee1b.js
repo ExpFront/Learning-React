@@ -1,5 +1,5 @@
 
-var Comment = React.createClass({
+var Comment = React.createClass({displayName: "Comment",
 
   getInitialState: function() {
     return {data: []}
@@ -37,38 +37,40 @@ var Comment = React.createClass({
     });
   },
 
+  componentDidMount: function() {
+    this.loadCommentFromServer();
+    setInterval(this.loadCommentFromServer, this.props.pollInterval);
+  },
+
   render: function() {
     return (
-      <div>
-        {
-          this.props.data.map(function (name) {
-            return <h2>{name}</h2> 
-          })
-        }
-      </div>  
+      React.createElement("div", null, 
+        React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
+        React.createElement(CommentList, {data: this.state.data})
+      )  
     );
   }
 });
 
-var CommentList = React.createClass({
+var CommentList = React.createClass({displayName: "CommentList",
   render: function() {
     var commentNodes = this.props.data.map(function (comment) {
       return (
-        <Comment author={comment.author}>
-          {comment.text}
-        </Comment>
+        React.createElement(Comment, {author: comment.author}, 
+          comment.text
+        )
       );
     });
     return (
-      <div className="commentList">
-        {commentNodes}
-      </div>
+      React.createElement("div", {className: "commentList"}, 
+        commentNodes
+      )
     );
   }
 });
 
 
-var CommentForm = React.createClass({
+var CommentForm = React.createClass({displayName: "CommentForm",
 
   handleSubmit: function(e) {
     e.preventDefault();
@@ -77,7 +79,7 @@ var CommentForm = React.createClass({
 
     if(!login || !password) return; //If this inputs are empty return
 
-    this.props.onCommentSubmit({login: login, password: password});
+    this.props.onCommentSubmit({login: login, password: password}); 
 
     React.findDOMNode(this.refs.login).value = '';
     React.findDOMNode(this.refs.password).value = '';
@@ -86,23 +88,21 @@ var CommentForm = React.createClass({
 
   render: function() {
     return (
-      <form>
-        <input type="text" ref="login" placeholder="Your name: "/>
-        <input type="text" ref="password" placeholder="Your password: "/>
-        <input type="submit" value="Post" />
-      </form>
+      React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit, onCommentSubmit: this.props.handleCommentSubmit}, 
+        React.createElement("input", {type: "text", ref: "login", placeholder: "Your name: "}), 
+        React.createElement("input", {type: "text", ref: "password", placeholder: "Your password: "}), 
+        React.createElement("input", {type: "submit", value: "Post"})
+      )
     );
+
   }
 });
 
 var onLoad= function() {
   React.render(
-    <Comment url="datas.json" />,
+    React.createElement(Comment, {url: "datas.json", pollInterval: "3000"}),
     document.getElementById('content')
   );
 }
 
 onLoad();
-
-
-// Take datas from input -> in an array -> full array back -> render full array

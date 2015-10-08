@@ -99,7 +99,7 @@ var CommentForm = React.createClass({displayName: "CommentForm",
 
 var onLoad = function() {
   React.render(
-    React.createElement(Comment, {url: "datas.json", pollInterval: 3000}),
+    React.createElement(Comment, {url: "datas.json", pollInterval: "3000"}),
     document.getElementById('content')
   );
 };

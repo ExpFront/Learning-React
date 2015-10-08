@@ -46,7 +46,7 @@ var Comment = React.createClass({
     return (
       <div>
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-        <CommentList loadCommentFromServer={this.loadCommentFromServer} data={this.state.data} />
+        <CommentList data={this.state.data} />
       </div>  
     );
   }
@@ -99,7 +99,7 @@ var CommentForm = React.createClass({
 
 var onLoad = function() {
   React.render(
-    <Comment url="datas.json" pollInterval="3000" />,
+    <Comment url="datas.json" pollInterval={3000} />,
     document.getElementById('content')
   );
 };

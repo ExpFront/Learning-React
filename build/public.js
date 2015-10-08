@@ -97,7 +97,7 @@ var CommentForm = React.createClass({displayName: "CommentForm",
   }
 });
 
-ReactDOM.render(
+React.render(
   React.createElement(Comment, {url: "datas.json", pollInterval: 3000}),
   document.getElementById('content')
 );

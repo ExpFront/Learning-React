@@ -42,7 +42,7 @@ var Comment = React.createClass({displayName: "Comment",
       React.createElement("div", null, 
         React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
         React.createElement(CommentList, {data: this.state.data}), 
-        "onLoad();"
+        "onLoad()''"
       )  
     );
   }

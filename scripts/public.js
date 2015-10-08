@@ -42,6 +42,7 @@ var Comment = React.createClass({
       <div>
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
         <CommentList data={this.state.data} />
+        onLoad();
       </div>  
     );
   }
@@ -82,7 +83,7 @@ var CommentForm = React.createClass({
 
   render: function() {
     return (
-      <form onSubmit={this.handleSubmit} >
+      <form onSubmit={this.handleSubmit} onCommentSubmit={this.props.handleCommentSubmit} >
         <input type="text" ref="login" placeholder="Your name: "/>
         <input type="text" ref="password" placeholder="Your password: "/>
         <input type="submit" value="Post" />

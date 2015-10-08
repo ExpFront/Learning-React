@@ -40,7 +40,7 @@ var Comment = React.createClass({
   render: function() {
     return (
       <div>
-        
+        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
         <CommentList data={this.state.data} />
       </div>  
     );

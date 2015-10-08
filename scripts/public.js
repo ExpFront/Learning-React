@@ -87,9 +87,9 @@ var CommentForm = React.createClass({
 
   render: function() {
     return (
-      <form onSubmit={this.handleSubmit} onCommentSubmit={this.props.handleCommentSubmit} >
-        <input type="text" ref="author" placeholder="Your name: "/>
-        <input type="text" ref="text" placeholder="Your text: "/>
+     <form className="commentForm" onSubmit={this.handleSubmit}>
+        <input type="text" placeholder="Your name" ref="author" />
+        <input type="text" placeholder="Say something..." ref="text" />
         <input type="submit" value="Post" />
       </form>
     );

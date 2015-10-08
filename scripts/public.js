@@ -74,14 +74,14 @@ var CommentForm = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
     var author = this.refs.author.value.trim();
-    var text = this.refs.text.value.trim();
+    var entry = this.refs.entry.value.trim();
 
-    if(!author || !text) return; //If this inputs are empty return
+    if(!author || !entry) return; //If this inputs are empty return
 
-    this.props.onCommentSubmit({author: author, text: text});
+    this.props.onCommentSubmit({author: author, text: entry});
 
     this.refs.author.value = '';
-    this.refs.text.value = '';
+    this.refs.entry.value = '';
     return;
   },
 
@@ -89,7 +89,7 @@ var CommentForm = React.createClass({
     return (
       <form onSubmit={this.handleSubmit} onCommentSubmit={this.props.handleCommentSubmit} >
         <input type="text" ref="author" placeholder="Your name: "/>
-        <input type="text" ref="text" placeholder="Your text: "/>
+        <input type="text" ref="entry" placeholder="Your text: "/>
         <input type="submit" value="Post" />
       </form>
     );

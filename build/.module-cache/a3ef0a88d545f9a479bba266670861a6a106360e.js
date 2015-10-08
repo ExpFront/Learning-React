@@ -76,12 +76,12 @@ var CommentForm = React.createClass({displayName: "CommentForm",
     var author = this.refs.author.value.trim();
     var entry = this.refs.entry.value.trim();
 
-    if(!author || !entry) return; //If this inputs are empty return
+    if(!author || !text) return; //If this inputs are empty return
 
-    this.props.onCommentSubmit({author: author, text: entry});
+    this.props.onCommentSubmit({author: author, text: text});
 
     this.refs.author.value = '';
-    this.refs.entry.value = '';
+    this.refs.text.value = '';
     return;
   },
 

@@ -63,6 +63,7 @@ var CommentList = React.createClass({
            );
           })
         }
+        onload();
       </div>
     )
   }
@@ -79,7 +80,6 @@ var CommentForm = React.createClass({
     if(!author || !text) return; //If this inputs are empty return
 
     this.props.onCommentSubmit({author: author, text: text});
-    onLoad();
 
     React.findDOMNode(this.refs.author).value = '';
     React.findDOMNode(this.refs.text).value = '';
@@ -98,12 +98,12 @@ var CommentForm = React.createClass({
   }
 });
 
-var onLoad= function() {
+var onLoad = function() {
   React.render(
-    <Comment url="datas.json" pollInterval="3000">,
+    <Comment url="datas.json" pollInterval="3000" />,
     document.getElementById('content')
   );
-}
+};
 
 onLoad();
 

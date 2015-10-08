@@ -56,11 +56,12 @@ var CommentList = React.createClass({
   render: function() {
     return (
       <div className="commentList">
-        {this.props.data.map(function (comment) {
-          return (
-            <h2>{comment}</h2>
-          );
-        });
+        {
+          this.props.data.map(function (comment) {
+            return (
+             <h2>{comment}</h2>
+            )
+          })
       }
       </div>
     );

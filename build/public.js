@@ -26,7 +26,7 @@ var Comment = React.createClass({displayName: "Comment",
     $.ajax({
       url: this.props.url,
       dataType: 'json',
-      type: 'POST',
+      type: 'HEAD',
       data: comment,
       success: function(data) {
         this.setState({data: data});

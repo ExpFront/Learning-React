@@ -54,14 +54,14 @@ var CommentBox = React.createClass({
 
 var CommentList = React.createClass({
   render: function() {
-    var commentNodes = this.props.data.map(function (comment) {
-      return (
-          {comment}
-      );
-    });
     return (
       <div className="commentList">
-        {commentNodes}
+        {this.props.data.map(function (comment) {
+          return (
+            <h2>{comment}</h2>
+          );
+        });
+      }
       </div>
     );
   }

@@ -41,7 +41,7 @@ var Comment = React.createClass({
     return (
       <div>
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-        <CommentList data={comments} />
+        <CommentList data={this.props.data} />
       </div>  
     );
   }

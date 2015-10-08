@@ -1,11 +1,11 @@
 
-var Comment = React.createClass({
+var Comment = React.createClass({displayName: "Comment",
 
   getInitialState: function() {
     return {data: []}
   },
 
-  loadCommentsFromServer: function() {
+  loadCommentFromServer: function() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -36,7 +36,7 @@ var Comment = React.createClass({
       }.bind(this)
     });
   },
-
+  
   componentDidMount: function() {
     this.loadCommentsFromServer();
     setInterval(this.loadCommentsFromServer, this.props.pollInterval);
@@ -44,34 +44,34 @@ var Comment = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-        <CommentList loadCommentFromServer={this.loadCommentFromServer} data={this.state.data} />
-      </div>  
+      React.createElement("div", null, 
+        React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
+        React.createElement(CommentList, {loadCommentFromServer: this.loadCommentFromServer, data: this.state.data})
+      )  
     );
   }
 });
 
-var CommentList = React.createClass({
+var CommentList = React.createClass({displayName: "CommentList",
   render: function() {
     return (
       
-      <div>
+      React.createElement("div", null, 
       
-        {
+        
           this.props.data.map(function (name) {
            return (
-             <h3>{name}</h3>
+             React.createElement("h3", null, name)
            );
           })
-        }
-      </div>
+        
+      )
     )
   }
 });
 
 
-var CommentForm = React.createClass({
+var CommentForm = React.createClass({displayName: "CommentForm",
 
   handleSubmit: function(e) {
     e.preventDefault();
@@ -90,11 +90,11 @@ var CommentForm = React.createClass({
 
   render: function() {
     return (
-      <form onSubmit={this.handleSubmit} onCommentSubmit={this.props.handleCommentSubmit} >
-        <input type="text" ref="author" placeholder="Your name: "/>
-        <input type="text" ref="text" placeholder="Your text: "/>
-        <input type="submit" value="Post" />
-      </form>
+      React.createElement("form", {onSubmit: this.handleSubmit, onCommentSubmit: this.props.handleCommentSubmit}, 
+        React.createElement("input", {type: "text", ref: "author", placeholder: "Your name: "}), 
+        React.createElement("input", {type: "text", ref: "text", placeholder: "Your text: "}), 
+        React.createElement("input", {type: "submit", value: "Post"})
+      )
     );
 
   }
@@ -102,7 +102,7 @@ var CommentForm = React.createClass({
 
 var onLoad= function() {
   React.render(
-    <Comment url="datas.json" />,
+    React.createElement(Comment, {url: "datas.json"}),
     document.getElementById('content')
   );
 }

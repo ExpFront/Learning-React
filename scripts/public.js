@@ -73,15 +73,15 @@ var CommentForm = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    var author = React.findDOMNode(this.refs.author).value.trim();
-    var text = React.findDOMNode(this.refs.text).value.trim();
+    var author = this.refs.author.value.trim();
+    var text = this.refs.text.value.trim();
 
     if(!author || !text) return; //If this inputs are empty return
 
     this.props.onCommentSubmit({author: author, text: text});
 
-    React.findDOMNode(this.refs.author).value = '';
-    React.findDOMNode(this.refs.author).value = '';
+    this.refs.author.value = '';
+    this.refs.author.value = '';
     return;
   },
 
@@ -97,7 +97,7 @@ var CommentForm = React.createClass({
   }
 });
 
-React.render(
+ReactDOM.render(
   <Comment url="datas.json" pollInterval={3000} />,
   document.getElementById('content')
 );

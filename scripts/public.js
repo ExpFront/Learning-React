@@ -42,7 +42,6 @@ var Comment = React.createClass({
       <div>
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
         <CommentList data={this.state.data} />
-        onLoad();
       </div>  
     );
   }
@@ -53,7 +52,7 @@ var CommentList = React.createClass({
     return (
       <div>
         {
-          this.props.data.map(function (name) {
+          this.state.data.map(function (name) {
            return (
              <h3>{name}</h3>
            );

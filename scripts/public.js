@@ -2,7 +2,7 @@
 var Comment = React.createClass({
 
   getInitialState: function() {
-    return {data: []}
+    return {data: []};
   },
 
   loadCommentsFromServer: function() {

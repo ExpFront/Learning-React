@@ -54,7 +54,7 @@ var CommentList = React.createClass({
         {
           this.props.data.map(function (name) {
            return (
-             <h3>{name}</h3>
+             <h3>{name} </h3>
            );
           })
         }

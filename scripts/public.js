@@ -1,5 +1,5 @@
 
-var Comment = React.createClass({
+var CommentBox = React.createClass({
 
   getInitialState: function() {
     return {data: []};

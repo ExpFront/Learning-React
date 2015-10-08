@@ -52,6 +52,21 @@ var Comment = React.createClass({
   }
 });
 
+var CommentList = React.createClass({
+  render: function() {
+    return (
+      <div>
+        {
+          this.props.data.map(function (name) {
+           return (
+             <h3>{name}</h3>
+           );
+          })
+        }
+      </div>
+    )
+  }
+});
 
 
 var CommentForm = React.createClass({

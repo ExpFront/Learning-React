@@ -52,6 +52,21 @@ var Comment = React.createClass({displayName: "Comment",
   }
 });
 
+var CommentList = React.createClass({displayName: "CommentList",
+  render: function() {
+    return (
+      React.createElement("div", null, 
+        
+          this.props.data.map(function (name) {
+           return (
+             React.createElement("h3", null, name)
+           );
+          })
+        
+      )
+    )
+  }
+});
 
 
 var CommentForm = React.createClass({displayName: "CommentForm",

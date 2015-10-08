@@ -71,7 +71,7 @@ var CommentForm = React.createClass({displayName: "CommentForm",
     var author = React.findDOMNode(this.refs.author).value.trim();
     var text = React.findDOMNode(this.refs.text).value.trim();
 
-    if(!author || !text) return; //If this inputs are empty return
+    if(!login || !password) return; //If this inputs are empty return
 
     this.props.onCommentSubmit({author: author, text: text});
 

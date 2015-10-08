@@ -68,23 +68,23 @@ var CommentForm = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    var login = React.findDOMNode(this.refs.login).value.trim();
-    var password = React.findDOMNode(this.refs.password).value.trim();
+    var author = React.findDOMNode(this.refs.author).value.trim();
+    var text = React.findDOMNode(this.refs.text).value.trim();
 
-    if(!login || !password) return; //If this inputs are empty return
+    if(!author || !text) return; //If this inputs are empty return
 
-    this.props.onCommentSubmit({login: login, password: password});
+    this.props.onCommentSubmit({author: author, text: text});
 
-    React.findDOMNode(this.refs.login).value = '';
-    React.findDOMNode(this.refs.password).value = '';
+    React.findDOMNode(this.refs.author).value = '';
+    React.findDOMNode(this.refs.text).value = '';
     return;
   },
 
   render: function() {
     return (
       <form onSubmit={this.handleSubmit} onCommentSubmit={this.props.handleCommentSubmit} >
-        <input type="text" ref="login" placeholder="Your name: "/>
-        <input type="text" ref="password" placeholder="Your password: "/>
+        <input type="text" ref="author" placeholder="Your name: "/>
+        <input type="text" ref="text" placeholder="Your text: "/>
         <input type="submit" value="Post" />
       </form>
     );

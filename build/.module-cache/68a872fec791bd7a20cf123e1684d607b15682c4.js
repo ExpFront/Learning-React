@@ -1,5 +1,5 @@
 
-var Comment = React.createClass({
+var Comment = React.createClass({displayName: "Comment",
 
   getInitialState: function() {
     return {data: []}
@@ -39,32 +39,32 @@ var Comment = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-        <CommentList data={this.state.data} />
-      </div>  
+      React.createElement("div", null, 
+        React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
+        React.createElement(CommentList, {data: this.state.data})
+      )  
     );
   }
 });
 
-var CommentList = React.createClass({
+var CommentList = React.createClass({displayName: "CommentList",
   render: function() {
     return (
-      <div>
-        {
+      React.createElement("div", null, 
+        
           this.props.data.map(function (name) {
            return (
-             <h3>{name}</h3>
+             React.createElement("h3", null, name)
            );
           })
-        }
-      </div>
+        
+      )
     )
   }
 });
 
 
-var CommentForm = React.createClass({
+var CommentForm = React.createClass({displayName: "CommentForm",
 
   handleSubmit: function(e) {
     e.preventDefault();
@@ -82,11 +82,11 @@ var CommentForm = React.createClass({
 
   render: function() {
     return (
-      <form onSubmit={this.handleSubmit} >
-        <input type="text" ref="login" placeholder="Your name: "/>
-        <input type="text" ref="password" placeholder="Your password: "/>
-        <input type="submit" value="Post" />
-      </form>
+      React.createElement("form", null, 
+        React.createElement("input", {type: "text", ref: "login", placeholder: "Your name: "}), 
+        React.createElement("input", {type: "text", ref: "password", placeholder: "Your password: "}), 
+        React.createElement("input", {type: "submit", value: "Post"})
+      )
     );
 
   }
@@ -94,7 +94,7 @@ var CommentForm = React.createClass({
 
 var onLoad= function() {
   React.render(
-    <Comment url="datas.json" />,
+    React.createElement(Comment, {url: "datas.json"}),
     document.getElementById('content')
   );
 }

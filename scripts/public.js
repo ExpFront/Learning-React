@@ -98,7 +98,7 @@ var CommentForm = React.createClass({
 });
 
 var onLoad = function() {
-  React.render(
+  ReactDOM.render(
     <Comment url="datas.json" pollInterval={3000} />,
     document.getElementById('content')
   );

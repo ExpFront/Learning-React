@@ -55,9 +55,7 @@ var Comment = React.createClass({
 var CommentList = React.createClass({
   render: function() {
     return (
-      
       <div>
-      
         {
           this.props.data.map(function (name) {
            return (
@@ -102,7 +100,7 @@ var CommentForm = React.createClass({
 
 var onLoad= function() {
   React.render(
-    <Comment url="datas.json" />,
+    <Comment url="datas.json" pollInterval="3000">,
     document.getElementById('content')
   );
 }

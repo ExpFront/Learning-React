@@ -1,5 +1,5 @@
 
-var Comment = React.createClass({
+var CommentBox = React.createClass({
 
   getInitialState: function() {
     return {data: []};
@@ -99,7 +99,7 @@ var CommentForm = React.createClass({
 });
 
 ReactDOM.render(
-  <Comment url="datas.json" pollInterval={3000} />,
+  <CommentBox url="datas.json" pollInterval={3000} />,
   document.getElementById('content')
 );
 

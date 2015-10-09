@@ -66,30 +66,26 @@ var CommentList = React.createClass({
 
 
 var CommentForm = React.createClass({
-
   handleSubmit: function(e) {
     e.preventDefault();
     var author = this.refs.author.value.trim();
     var text = this.refs.text.value.trim();
-
-    if(!author || !text) return; //If this inputs are empty return
-
-    this.props.onCommentSubmit({author: author, text: text});
-
+    if (!text || !author) {
+      return;
+    }
+    // TODO: send request to the server
     this.refs.author.value = '';
-    this.refs.author.value = '';
+    this.refs.text.value = '';
     return;
   },
-
   render: function() {
     return (
-     <form className="commentForm" onSubmit={this.handleSubmit}>
+      <form className="commentForm" onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Your name" ref="author" />
         <input type="text" placeholder="Say something..." ref="text" />
         <input type="submit" value="Post" />
       </form>
     );
-
   }
 });
 

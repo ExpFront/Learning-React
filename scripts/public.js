@@ -20,7 +20,8 @@ var Comment = React.createClass({
   render: function() {
     return (
      <div>
-        <CommentList data={this.state.data} />
+        <ShowDatas data={this.state.data} />
+        <CommentList />
       </div>
     )
   }
@@ -69,7 +70,6 @@ var CommentList = React.createClass({
          <input type="text" ref="text" />
          <input type="submit" />
        </form>
-       <ShowDatas data={this.props.data} />
       </div>
     );
   }

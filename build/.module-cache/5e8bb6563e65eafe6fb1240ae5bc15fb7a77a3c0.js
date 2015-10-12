@@ -21,7 +21,7 @@ var Comment = React.createClass({displayName: "Comment",
     return (
      React.createElement("div", null, 
         React.createElement(ShowDatas, {data: this.state.data}), 
-        React.createElement(CommentList, null)
+        React.createElement(CommentList, {data: this.state.data})
       )
     )
   }

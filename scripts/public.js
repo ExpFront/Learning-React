@@ -55,7 +55,7 @@ var ShowDatas = React.createClass({
       <div>
         {
           this.props.data.map(function(node) {
-            return <h2>{node.author}</h2>
+            return <h2>{node.author}{node.text}</h2>
           })
         }
       </div>
@@ -72,10 +72,9 @@ var CommentList = React.createClass({
     e.preventDefault();
     var innerAuthor = this.refs.author.value.trim();
     var innerText = this.refs.text.value.trim();
-
     if (!innerAuthor || !innerText) return;
 
-    this.props.handleSubmitRequest({author: innerAuthor, text: innerText});
+    this.props.handleSubmitRequest({author: innerAuthor, text: innerText, id: id++});
 
     this.refs.author.value = '';
     this.refs.text.value = '';

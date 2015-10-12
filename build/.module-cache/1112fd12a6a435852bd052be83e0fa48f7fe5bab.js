@@ -4,22 +4,15 @@ var Comment = React.createClass({displayName: "Comment",
   },
   componentWillMount: function() {
     $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    url: "test.html",
+    context: document.body
+  });
   },
 
   render: function() {
     return (
      React.createElement("div", null, 
-        React.createElement(CommentList, {data: this.state.data})
+        React.createElement(CommentList, {data: data})
       )
     )
   }

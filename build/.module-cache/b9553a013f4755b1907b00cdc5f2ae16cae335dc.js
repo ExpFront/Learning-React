@@ -4,33 +4,22 @@ var Comment = React.createClass({displayName: "Comment",
   },
   componentWillMount: function() {
     $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    url: "test.html",
+    context: document.body
+  });
   },
 
   render: function() {
     return (
      React.createElement("div", null, 
-        React.createElement(CommentList, {data: this.state.data})
+        React.createElement(CommentList, null)
+
       )
     )
   }
 });
 
 
-var ShowData = function(data) {
-  data.map(function(node) {
-    return React.createElement("h2", null, "node")
-  })
-};
 
 
 
@@ -60,7 +49,7 @@ var CommentList = React.createClass({displayName: "CommentList",
          React.createElement("input", {type: "text", ref: "text"}), 
          React.createElement("input", {type: "submit"})
        ), 
-       React.createElement(ShowDatas, {data: this.props.data})
+       React.createElement(ShowDatas, null)
       )
     );
   }

@@ -8,7 +8,6 @@ var NotesList = React.createClass({displayName: "NotesList",
 	render: function() {
 		return (
 			React.createElement("div", null, 
-				
 					notePad.notes.map(function (note) {
 						return (
 							React.createElement("div", null, note)

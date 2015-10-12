@@ -25,6 +25,7 @@ var NotesList = React.createClass({
 
 var SubmitNote = React.createClass({
 
+
 	handleSubmit: function(e) {
 		e.preventDefault();
 		var newNote = React.findDOMNode(this.refs.text).value.trim();

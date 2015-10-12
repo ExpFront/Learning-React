@@ -19,7 +19,7 @@ var Comment = React.createClass({displayName: "Comment",
   render: function() {
     return (
      React.createElement("div", null, 
-        React.createElement(CommentList, {data: this.state.data})
+        React.createElement(CommentList, {data: data})
       )
     )
   }

@@ -18,6 +18,7 @@ var Comment = React.createClass({
   },
 
   handleSubmitRequest: function(comment) {
+    var newId = this.state.data.length + 1;
     var newData = this.state.data.concat([comment]);
     this.setState({data: newData});
     $.ajax({
@@ -55,7 +56,7 @@ var ShowDatas = React.createClass({
       <div>
         {
           this.props.data.map(function(node) {
-            return <h2>{node.author}{node.text}</h2>
+            return <h2 key={node.id}>{node.author}{node.text}</h2>
           })
         }
       </div>
@@ -74,7 +75,7 @@ var CommentList = React.createClass({
     var innerText = this.refs.text.value.trim();
     if (!innerAuthor || !innerText) return;
 
-    this.props.handleSubmitRequest({author: innerAuthor, text: innerText, id: id++});
+    this.props.handleSubmitRequest({author: innerAuthor, text: innerText});
 
     this.refs.author.value = '';
     this.refs.text.value = '';

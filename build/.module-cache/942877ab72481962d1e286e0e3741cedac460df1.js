@@ -18,7 +18,6 @@ var Comment = React.createClass({displayName: "Comment",
   },
 
   handleSubmitRequest: function(comment) {
-    var newId = this.state.data.length + 1;
     var newData = this.state.data.concat([comment]);
     this.setState({data: newData});
     $.ajax({

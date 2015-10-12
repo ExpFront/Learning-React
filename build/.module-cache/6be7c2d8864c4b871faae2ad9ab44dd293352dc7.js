@@ -1,8 +1,8 @@
 var Comment = React.createClass({displayName: "Comment",
   getInitialState: function() {
-    return {data: []};
+    return {data: []}
   },
-
+  
   componentWillMount: function() {
     $.ajax({
       url: this.props.url,
@@ -51,7 +51,7 @@ var CommentList = React.createClass({displayName: "CommentList",
     var innerAuthor = this.refs.author.value.trim();
     var innerText = this.refs.text.value.trim();
 
-    if (!innerAuthor || !innerText) return;
+    if (!innerAuthor & !innerText) return;
 
     // TODO: send new datas into an object
 

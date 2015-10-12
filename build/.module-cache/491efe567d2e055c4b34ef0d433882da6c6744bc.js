@@ -1,4 +1,4 @@
-var Comment = React.createClass({
+var Comment = React.createClass({displayName: "Comment",
   getInitialState: function() {
     return {data: []};
   },
@@ -18,6 +18,7 @@ var Comment = React.createClass({
   },
 
   handleSubmitRequest: function(comment) {
+    var newId = this.state.data.length + 1;
     var newData = this.state.data.concat([comment]);
     this.setState({data: newData});
     $.ajax({
@@ -40,25 +41,25 @@ var Comment = React.createClass({
 
   render: function() {
     return (
-     <div>
-        <ShowDatas data={this.state.data} />
-        <CommentList handleSubmitRequest={this.handleSubmitRequest} />
-      </div>
+     React.createElement("div", null, 
+        React.createElement(ShowDatas, {data: this.state.data}), 
+        React.createElement(CommentList, {handleSubmitRequest: this.handleSubmitRequest})
+      )
     )
   }
 });
 
 
-var ShowDatas = React.createClass({
+var ShowDatas = React.createClass({displayName: "ShowDatas",
   render: function() {
     return (
-      <div>
-        {
+      React.createElement("div", null, 
+        
           this.props.data.map(function(node) {
-            return <h2 key={node.id}>Your name is: {node.author}. And your text is: {node.text}</h2>
+            return React.createElement("h2", {key: node.id}, "Your name is: ", node.author, ". And your text is: ", node.text)
           })
-        }
-      </div>
+        
+      )
     );
   }
 });
@@ -66,7 +67,7 @@ var ShowDatas = React.createClass({
 
 
 
-var CommentList = React.createClass({
+var CommentList = React.createClass({displayName: "CommentList",
 
   handleSubmit: function(e) {
     e.preventDefault();
@@ -74,7 +75,7 @@ var CommentList = React.createClass({
     var innerText = this.refs.text.value.trim();
     if (!innerAuthor || !innerText) return;
 
-    this.props.handleSubmitRequest({author: innerAuthor, text: innerText, id: id++});
+    this.props.handleSubmitRequest({author: innerAuthor, text: innerText});
 
     this.refs.author.value = '';
     this.refs.text.value = '';
@@ -84,13 +85,13 @@ var CommentList = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <form className="dataField" onSubmit={this.handleSubmit} handleSubmitRequest={this.props.handleSubmitRequest}>
-         <input type="text" ref="author" />
-         <input type="text" ref="text" />
-         <input type="submit" />
-       </form>
-      </div>
+      React.createElement("div", null, 
+        React.createElement("form", {className: "dataField", onSubmit: this.handleSubmit, handleSubmitRequest: this.props.handleSubmitRequest}, 
+         React.createElement("input", {type: "text", ref: "author"}), 
+         React.createElement("input", {type: "text", ref: "text"}), 
+         React.createElement("input", {type: "submit"})
+       )
+      )
     );
   }
 });
@@ -98,6 +99,6 @@ var CommentList = React.createClass({
 
 
 ReactDOM.render(
-  <Comment url="datas.json" />,
+  React.createElement(Comment, {url: "datas.json"}),
   document.getElementById('content')
 );

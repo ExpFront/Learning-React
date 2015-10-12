@@ -34,7 +34,7 @@ var ShowDatas = React.createClass({
       <div>
         {
           this.props.data.map(function(node) {
-            return <h2>{node}</h2>
+            return <h2>{node.author}</h2>
           })
         }
       </div>

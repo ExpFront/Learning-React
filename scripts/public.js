@@ -26,7 +26,7 @@ var Comment = React.createClass({
       type: 'HEAD',
       cache: false,
       success: function(data) {
-        this.setState({data: data});
+        this.setState({data: this.state.data});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());

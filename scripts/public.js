@@ -23,10 +23,10 @@ var Comment = React.createClass({
     $.ajax({
       url: this.props.url,
       dataType: 'json',
-      type: 'POST',
+      type: 'HEAD',
       cache: false,
       success: function(data) {
-        this.setState({data: data});
+        console.error(this.props.url, status, err.toString());
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());

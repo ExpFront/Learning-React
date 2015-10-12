@@ -42,7 +42,7 @@ var Comment = React.createClass({
     return (
      <div>
         <ShowDatas data={this.state.data} />
-        <CommentList id={this.state.data.id} handleSubmitRequest={this.handleSubmitRequest} />
+        <CommentList id={this.state.data.length} handleSubmitRequest={this.handleSubmitRequest} />
       </div>
     )
   }

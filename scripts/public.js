@@ -3,7 +3,7 @@ var Comment = React.createClass({
     return {data: []};
   },
 
-  componentWillMount: function() {
+  componentDidMount: function() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',

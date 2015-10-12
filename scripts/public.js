@@ -55,7 +55,7 @@ var ShowDatas = React.createClass({
       <div>
         {
           this.props.data.map(function(node) {
-            return <h2 key={node.id}>Your name is: {node.author}. And your text is: {node.text}</h2>
+            return <h2 key={node.id}>{node.author} said: {node.text}</h2>
           })
         }
       </div>

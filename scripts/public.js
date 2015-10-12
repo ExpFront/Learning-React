@@ -36,7 +36,6 @@ var Comment = React.createClass({
 
   componentDidMount: function() {
     this.loadComponents();
-    setInterval(this.loadComponents, 2000)
   },
 
   render: function() {

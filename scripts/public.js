@@ -26,11 +26,19 @@ var Comment = React.createClass({
 });
 
 
-var ShowDatas = function(data) {
-  data.map(function(node) {
-    return <h2>{node}</h2>
-  })
-};
+var ShowDatas = React.createClass({
+  render: function() {
+    return (
+      <div>
+        {
+          this.props.data.map(function(node) {
+            return <h2>{node}</h2>
+          })
+        }
+      </div>
+    );
+  }
+});
 
 
 

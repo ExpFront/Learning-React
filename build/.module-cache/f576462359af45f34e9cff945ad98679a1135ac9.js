@@ -1,4 +1,4 @@
-var Comment = React.createClass({
+var Comment = React.createClass({displayName: "Comment",
   getInitialState: function() {
     return {data: []}
   },
@@ -18,9 +18,9 @@ var Comment = React.createClass({
 
   render: function() {
     return (
-     <div>
-        <CommentList data={this.state.data} />
-      </div>
+     React.createElement("div", null, 
+        React.createElement(CommentList, {data: this.state.data})
+      )
     )
   }
 });
@@ -28,14 +28,14 @@ var Comment = React.createClass({
 
 var ShowDatas = function(data) {
   data.map(function(node) {
-    return <h2>{node}</h2>
+    return React.createElement("h2", null, "node")
   })
 };
 
 
 
 
-var CommentList = React.createClass({
+var CommentList = React.createClass({displayName: "CommentList",
 
   handleSubmit: function(e) {
     e.preventDefault();
@@ -54,14 +54,14 @@ var CommentList = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <form className="dataField" onSubmit={this.handleSubmit}>
-         <input type="text" ref="author" />
-         <input type="text" ref="text" />
-         <input type="submit" />
-       </form>
-       <ShowDatas data={this.props.data} />
-      </div>
+      React.createElement("div", null, 
+        React.createElement("form", {className: "dataField", onSubmit: this.handleSubmit}, 
+         React.createElement("input", {type: "text", ref: "author"}), 
+         React.createElement("input", {type: "text", ref: "text"}), 
+         React.createElement("input", {type: "submit"})
+       ), 
+       React.createElement(ShowDatas, {data: this.props.data})
+      )
     );
   }
 });
@@ -71,6 +71,6 @@ var CommentList = React.createClass({
 
 
 ReactDOM.render(
-  <Comment url="datas.json" />,
+  React.createElement(Comment, {url: "datas.json"}),
   document.getElementById('content')
 )

@@ -38,7 +38,7 @@ var Comment = React.createClass({displayName: "Comment",
     return (
      React.createElement("div", null, 
         React.createElement(ShowDatas, {data: this.state.data}), 
-        React.createElement(CommentList, {handleSubmitRequest: this.handleSubmitRequest})
+        React.createElement(CommentList, {"handleSubmitRequуst": this.handleSubmitRequest})
       )
     )
   }

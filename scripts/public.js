@@ -38,7 +38,7 @@ var Comment = React.createClass({
     return (
      <div>
         <ShowDatas data={this.state.data} />
-        <CommentList handleSubmitRequst={this.handleSubmitRequest} />
+        <CommentList handleSubmitRequest={this.handleSubmitRequest} />
       </div>
     )
   }

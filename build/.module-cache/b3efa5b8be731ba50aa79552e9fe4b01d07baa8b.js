@@ -1,4 +1,4 @@
-var Comment = React.createClass({
+var Comment = React.createClass({displayName: "Comment",
   getInitialState: function() {
     return {data: []};
   },
@@ -54,29 +54,29 @@ var Comment = React.createClass({
 
   render: function() {
     return (
-     <div>
-        <ShowDatas />
-        <CommentList />
-      </div>
+     React.createElement("div", null, 
+        React.createElement(ShowDatas, null), 
+        React.createElement(CommentList, null)
+      )
     )
   }
 });
 
 
-var ShowDatas = React.createClass({
+var ShowDatas = React.createClass({displayName: "ShowDatas",
   contextTypes: {
     data: React.PropTypes.array
   },
 
   render: function() {
     return (
-      <div>
-        {
+      React.createElement("div", null, 
+        
           this.context.data.map(function(node) {
-            return <h2 key={node.id}>{node.author} said: {node.text}</h2>
+            return React.createElement("h2", {key: node.id}, node.author, " said: ", node.text)
           })
-        }
-      </div>
+        
+      )
     );
   }
 });
@@ -84,7 +84,7 @@ var ShowDatas = React.createClass({
 
 
 
-var CommentList = React.createClass({
+var CommentList = React.createClass({displayName: "CommentList",
 
   contextTypes: {
     handleSubmitRequest: React.PropTypes.func,
@@ -108,13 +108,13 @@ var CommentList = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <form className="dataField" onSubmit={this.handleSubmit}>
-         <input type="text" ref="author" placeholder="Type your name: " />
-         <input type="text" ref="text" placeholder="Say something: " />
-         <input type="submit" value="Post" />
-       </form>
-      </div>
+      React.createElement("div", null, 
+        React.createElement("form", {className: "dataField", onSubmit: this.handleSubmit}, 
+         React.createElement("input", {type: "text", ref: "author", placeholder: "Type your name: "}), 
+         React.createElement("input", {type: "text", ref: "text", placeholder: "Say something: "}), 
+         React.createElement("input", {type: "submit"})
+       )
+      )
     );
   }
 });
@@ -122,6 +122,6 @@ var CommentList = React.createClass({
 
 
 ReactDOM.render(
-  <Comment url="datas.json" />,
+  React.createElement(Comment, {url: "datas.json"}),
   document.getElementById('content')
 );

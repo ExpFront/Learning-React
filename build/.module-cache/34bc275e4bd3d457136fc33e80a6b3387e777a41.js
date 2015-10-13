@@ -111,7 +111,7 @@ var CommentList = React.createClass({displayName: "CommentList",
       React.createElement("div", null, 
         React.createElement("form", {className: "dataField", onSubmit: this.handleSubmit}, 
          React.createElement("input", {type: "text", ref: "author", placeholder: "Type your name: "}), 
-         React.createElement("input", {type: "text", ref: "text", placeholder: "Say something: "}), 
+         React.createElement("input", {type: "text", ref: "text"}), 
          React.createElement("input", {type: "submit"})
        )
       )

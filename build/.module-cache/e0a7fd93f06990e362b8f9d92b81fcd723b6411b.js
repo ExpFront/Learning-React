@@ -55,8 +55,8 @@ var Comment = React.createClass({displayName: "Comment",
   render: function() {
     return (
      React.createElement("div", null, 
-        React.createElement(ShowDatas, null), 
-        React.createElement(CommentList, null)
+        React.createElement(ShowDatas, {data: this.state.data}), 
+        React.createElement(CommentList, {handleSubmitRequest: this.handleSubmitRequest})
       )
     )
   }
@@ -110,8 +110,8 @@ var CommentList = React.createClass({displayName: "CommentList",
     return (
       React.createElement("div", null, 
         React.createElement("form", {className: "dataField", onSubmit: this.handleSubmit}, 
-         React.createElement("input", {type: "text", ref: "author", placeholder: "Type your name: "}), 
-         React.createElement("input", {type: "text", ref: "text", placeholder: "Say something: "}), 
+         React.createElement("input", {type: "text", ref: "author"}), 
+         React.createElement("input", {type: "text", ref: "text"}), 
          React.createElement("input", {type: "submit"})
        )
       )

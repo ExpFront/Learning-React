@@ -55,8 +55,8 @@ var Comment = React.createClass({
   render: function() {
     return (
      <div>
-        <ShowDatas data={this.state.data} />
-        <CommentList id={this.state.data.length} handleSubmitRequest={this.handleSubmitRequest} />
+        <ShowDatas />
+        <CommentList />
       </div>
     )
   }
@@ -110,8 +110,8 @@ var CommentList = React.createClass({
     return (
       <div>
         <form className="dataField" onSubmit={this.handleSubmit}>
-         <input type="text" ref="author" />
-         <input type="text" ref="text" />
+         <input type="text" ref="author" placeholder="Type your name: " />
+         <input type="text" ref="text" placeholder="Say something: " />
          <input type="submit" />
        </form>
       </div>

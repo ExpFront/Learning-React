@@ -1,0 +1,25 @@
+{
+  "name": "learning_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ExpFront/Learning-React.git"
+  },
+  "author": "ExpFront",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ExpFront/Learning-React/issues"
+  },
+  "homepage": "https://github.com/ExpFront/Learning-React#readme",
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "^0.1.0",
+    "eslint-plugin-react": "^3.5.1"
+  }
+}

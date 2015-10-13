@@ -39,7 +39,7 @@ var Comment = React.createClass({
   },
 
   childContextTypes: {
-    data: React.PropTypes.object,
+    data: React.PropTypes.array,
     id: React.PropTypes.number,
     handleSubmitRequest: React.PropTypes.func
   },
@@ -65,7 +65,7 @@ var Comment = React.createClass({
 
 var ShowDatas = React.createClass({
   contextTypes: {
-    data: React.PropTypes.object
+    data: React.PropTypes.array
   },
 
   render: function() {

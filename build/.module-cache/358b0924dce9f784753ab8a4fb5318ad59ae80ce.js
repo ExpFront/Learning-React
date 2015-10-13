@@ -39,7 +39,7 @@ var Comment = React.createClass({displayName: "Comment",
   },
 
   childContextTypes: {
-    data: React.PropTypes.array,
+    data: React.PropTypes.object,
     id: React.PropTypes.number,
     handleSubmitRequest: React.PropTypes.func
   },

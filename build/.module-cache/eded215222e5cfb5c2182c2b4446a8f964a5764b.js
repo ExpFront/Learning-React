@@ -65,9 +65,9 @@ var Comment = React.createClass({displayName: "Comment",
 
 var ShowDatas = React.createClass({displayName: "ShowDatas",
   contextTypes: {
-    data: React.PropTypes.object
+    data: React.PropTypes.object,
+    id: React.PropTypes.number
   },
-
   render: function() {
     return (
       React.createElement("div", null, 
@@ -87,8 +87,7 @@ var ShowDatas = React.createClass({displayName: "ShowDatas",
 var CommentList = React.createClass({displayName: "CommentList",
 
   contextTypes: {
-    handleSubmitRequest: React.PropTypes.func,
-    id: React.PropTypes.number
+    handleSubmitRequest: React.PropTypes.func
   },
 
 

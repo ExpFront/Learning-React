@@ -65,14 +65,14 @@ var Comment = React.createClass({displayName: "Comment",
 
 var ShowDatas = React.createClass({displayName: "ShowDatas",
   contextTypes: {
-    data: React.PropTypes.object
+    data: React.PropTypes.object,
+    id: React.PropTypes.number
   },
-
   render: function() {
     return (
       React.createElement("div", null, 
         
-          this.context.data.map(function(node) {
+          data.map(function(node) {
             return React.createElement("h2", {key: node.id}, node.author, " said: ", node.text)
           })
         
@@ -87,8 +87,7 @@ var ShowDatas = React.createClass({displayName: "ShowDatas",
 var CommentList = React.createClass({displayName: "CommentList",
 
   contextTypes: {
-    handleSubmitRequest: React.PropTypes.func,
-    id: React.PropTypes.number
+    handleSubmitRequest: React.PropTypes.func
   },
 
 
@@ -98,7 +97,7 @@ var CommentList = React.createClass({displayName: "CommentList",
     var innerText = this.refs.text.value.trim();
     if (!innerAuthor || !innerText) return;
 
-    this.context.handleSubmitRequest({author: innerAuthor, text: innerText, id: this.context.id++});
+    handleSubmitRequest({author: innerAuthor, text: innerText, id: this.props.id++});
 
     this.refs.author.value = '';
     this.refs.text.value = '';

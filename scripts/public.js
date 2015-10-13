@@ -38,6 +38,20 @@ var Comment = React.createClass({
     this.loadComponents();
   },
 
+  childContextTypes: {
+    data: React.PropTypes.object,
+    id: React.PropTypes.number,
+    handleSubmitRequest: React.PropTypes.func
+  },
+
+  getChildContext: function() {
+    return {
+      data: this.state.data,
+      id: this.state.data.length,
+      handleSubmitRequest: this.handleSubmitRequest
+    }
+  },
+
   render: function() {
     return (
      <div>
@@ -50,11 +64,15 @@ var Comment = React.createClass({
 
 
 var ShowDatas = React.createClass({
+  contextTypes: {
+    data: React.PropTypes.object
+  },
+
   render: function() {
     return (
       <div>
         {
-          this.props.data.map(function(node) {
+          this.context.data.map(function(node) {
             return <h2 key={node.id}>{node.author} said: {node.text}</h2>
           })
         }
@@ -68,13 +86,19 @@ var ShowDatas = React.createClass({
 
 var CommentList = React.createClass({
 
+  contextTypes: {
+    handleSubmitRequest: React.PropTypes.func,
+    id: React.PropTypes.number
+  },
+
+
   handleSubmit: function(e) {
     e.preventDefault();
     var innerAuthor = this.refs.author.value.trim();
     var innerText = this.refs.text.value.trim();
     if (!innerAuthor || !innerText) return;
 
-    this.props.handleSubmitRequest({author: innerAuthor, text: innerText, id: this.props.id++});
+    this.context.handleSubmitRequest({author: innerAuthor, text: innerText, id: this.context.id++});
 
     this.refs.author.value = '';
     this.refs.text.value = '';
@@ -85,7 +109,7 @@ var CommentList = React.createClass({
   render: function() {
     return (
       <div>
-        <form className="dataField" onSubmit={this.handleSubmit} handleSubmitRequest={this.props.handleSubmitRequest}>
+        <form className="dataField" onSubmit={this.handleSubmit}>
          <input type="text" ref="author" />
          <input type="text" ref="text" />
          <input type="submit" />

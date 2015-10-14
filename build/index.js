@@ -44,85 +44,104 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const React = __webpack_require__(1);
-	const ReactDOM = __webpack_require__(157);
-	const $ = __webpack_require__(158);
+	'use strict';
 
-	const Comment = React.createClass({displayName: "Comment",
-	  getInitialState: function(){
-	    return {data: []};
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(157);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _jquery = __webpack_require__(158);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var Comment = _react2['default'].createClass({
+	  displayName: 'Comment',
+
+	  getInitialState: function getInitialState() {
+	    return { data: [] };
 	  },
 
-	  componentWillMount: function() {
+	  componentWillMount: function componentWillMount() {
 	    this.loadComponents();
 	  },
-	  loadComponents: function() {
-	    $.ajax({
+	  loadComponents: function loadComponents() {
+	    _jquery2['default'].ajax({
 	      url: this.props.url,
 	      dataType: 'json',
 	      cache: false,
-	      success: function(data) {
-	        this.setState({data: data});
-	      }.bind(this),
-	      error: function(xhr, status, err) {
+	      success: (function (data) {
+	        this.setState({ data: data });
+	      }).bind(this),
+	      error: (function (xhr, status, err) {
 	        console.error(this.props.url, status, err.toString());
-	      }.bind(this)
+	      }).bind(this)
 	    });
 	  },
 
-	  handleSubmitRequest: function(comment) {
-	    const newData = this.state.data.concat([comment]);
-	    this.setState({data: newData});
-	    $.ajax({
+	  handleSubmitRequest: function handleSubmitRequest(comment) {
+	    var newData = this.state.data.concat([comment]);
+	    this.setState({ data: newData });
+	    _jquery2['default'].ajax({
 	      url: this.props.url,
 	      dataType: 'json',
 	      type: 'HEAD',
 	      cache: false,
-	      success: function(data) {
-	        this.setState({data: this.state.data});
-	      }.bind(this),
-	      error: function(xhr, status, err) {
+	      success: (function (data) {
+	        this.setState({ data: this.state.data });
+	      }).bind(this),
+	      error: (function (xhr, status, err) {
 	        console.error(this.props.url, status, err.toString());
-	      }.bind(this)
+	      }).bind(this)
 	    });
 	  },
 
-	  render: function() {
-	    return (
-	     React.createElement("div", null,
-	        React.createElement(ShowDatas, {data: this.state.data}),
-	        React.createElement(CommentList, {id: this.state.data.length, handleSubmitRequest: this.handleSubmitRequest})
-	      )
-	    )
-	  }
-	});
-
-
-	const ShowDatas = React.createClass({displayName: "ShowDatas",
-	  render: function() {
-	    return (
-	      React.createElement("div", null,
-
-	          this.props.data.map(function(node) {
-	            return React.createElement("h2", {key: node.id}, node.author, " said: ", node.text)
-	          })
-
-	      )
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      null,
+	      _react2['default'].createElement(ShowDatas, { data: this.state.data }),
+	      _react2['default'].createElement(CommentList, { id: this.state.data.length, handleSubmitRequest: this.handleSubmitRequest })
 	    );
 	  }
 	});
 
+	var ShowDatas = _react2['default'].createClass({
+	  displayName: 'ShowDatas',
 
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      null,
+	      this.props.data.map(function (node) {
+	        return _react2['default'].createElement(
+	          'h2',
+	          { key: node.id },
+	          node.author,
+	          ' said: ',
+	          node.text
+	        );
+	      })
+	    );
+	  }
+	});
 
+	var CommentList = _react2['default'].createClass({
+	  displayName: 'CommentList',
 
-	const CommentList = React.createClass({displayName: "CommentList",
-	  handleSubmit: function(e) {
+	  handleSubmit: function handleSubmit(e) {
 	    e.preventDefault();
-	    const innerAuthor = this.refs.author.value.trim();
-	    const innerText = this.refs.text.value.trim();
+	    var innerAuthor = this.refs.author.value.trim();
+	    var innerText = this.refs.text.value.trim();
+	    var newId = this.props.id + 1;
 	    if (!innerAuthor || !innerText) return;
 
-	    this.props.handleSubmitRequest({author: innerAuthor, text: innerText, id: this.context.id++});
+	    this.props.handleSubmitRequest({ author: innerAuthor, text: innerText, id: newId });
 
 	    this.refs.author.value = '';
 	    this.refs.text.value = '';
@@ -130,26 +149,22 @@
 	    return;
 	  },
 
-	  render: function() {
-	    return (
-	      React.createElement("div", null,
-	        React.createElement("form", {className: "dataField", onSubmit: this.handleSubmit},
-	         React.createElement("input", {type: "text", ref: "author", placeholder: "Type your name: "}),
-	         React.createElement("input", {type: "text", ref: "text", placeholder: "Say something: "}),
-	         React.createElement("input", {type: "submit", value: "Post"})
-	       )
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      null,
+	      _react2['default'].createElement(
+	        'form',
+	        { className: 'dataField', onSubmit: this.handleSubmit },
+	        _react2['default'].createElement('input', { type: 'text', ref: 'author', placeholder: 'Type your name: ' }),
+	        _react2['default'].createElement('input', { type: 'text', ref: 'text', placeholder: 'Say something: ' }),
+	        _react2['default'].createElement('input', { type: 'submit', value: 'Post' })
 	      )
 	    );
 	  }
 	});
 
-
-
-	ReactDOM.render(
-	  React.createElement(Comment, {url: "datas.json"}),
-	  document.getElementById('content')
-	);
-
+	_reactDom2['default'].render(_react2['default'].createElement(Comment, { url: 'datas.json' }), document.getElementById('content'));
 
 /***/ },
 /* 1 */
@@ -14663,7 +14678,7 @@
 	 *
 	 * @providesModule shallowEqual
 	 * @typechecks
-	 *
+	 * 
 	 */
 
 	'use strict';
@@ -23021,7 +23036,7 @@
 		},
 
 		// Deferred helper
-		when: function( subordinate /*  ..., subordinateN */ ) {
+		when: function( subordinate /* , ..., subordinateN */ ) {
 			var i = 0,
 				resolveValues = slice.call( arguments ),
 				length = resolveValues.length,

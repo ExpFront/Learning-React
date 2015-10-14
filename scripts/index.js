@@ -1,3 +1,7 @@
+const React = require('react');
+const ReactDOM = require('react-dom');
+const $ = require('jquery');
+
 const Comment = React.createClass({
   getInitialState: function() {
     return {data: []};
@@ -21,7 +25,7 @@ const Comment = React.createClass({
   },
 
   handleSubmitRequest: function(comment) {
-    var newData = this.state.data.concat([comment]);
+    const newData = this.state.data.concat([comment]);
     this.setState({data: newData});
     $.ajax({
       url: this.props.url,
@@ -65,11 +69,11 @@ const ShowDatas = React.createClass({
 
 
 
-var CommentList = React.createClass({
+const CommentList = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
-    var innerAuthor = this.refs.author.value.trim();
-    var innerText = this.refs.text.value.trim();
+    const innerAuthor = this.refs.author.value.trim();
+    const innerText = this.refs.text.value.trim();
     if (!innerAuthor || !innerText) return;
 
     this.props.handleSubmitRequest({author: innerAuthor, text: innerText, id: this.context.id++});

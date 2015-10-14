@@ -49,7 +49,7 @@
 	const $ = __webpack_require__(158);
 
 	const Comment = React.createClass({displayName: "Comment",
-	  getInitialState: function() {
+	  getInitialState: function(){
 	    return {data: []};
 	  },
 
@@ -89,8 +89,8 @@
 
 	  render: function() {
 	    return (
-	     React.createElement("div", null, 
-	        React.createElement(ShowDatas, {data: this.state.data}), 
+	     React.createElement("div", null,
+	        React.createElement(ShowDatas, {data: this.state.data}),
 	        React.createElement(CommentList, {id: this.state.data.length, handleSubmitRequest: this.handleSubmitRequest})
 	      )
 	    )
@@ -101,12 +101,12 @@
 	const ShowDatas = React.createClass({displayName: "ShowDatas",
 	  render: function() {
 	    return (
-	      React.createElement("div", null, 
-	        
+	      React.createElement("div", null,
+
 	          this.props.data.map(function(node) {
 	            return React.createElement("h2", {key: node.id}, node.author, " said: ", node.text)
 	          })
-	        
+
 	      )
 	    );
 	  }
@@ -132,10 +132,10 @@
 
 	  render: function() {
 	    return (
-	      React.createElement("div", null, 
-	        React.createElement("form", {className: "dataField", onSubmit: this.handleSubmit}, 
-	         React.createElement("input", {type: "text", ref: "author", placeholder: "Type your name: "}), 
-	         React.createElement("input", {type: "text", ref: "text", placeholder: "Say something: "}), 
+	      React.createElement("div", null,
+	        React.createElement("form", {className: "dataField", onSubmit: this.handleSubmit},
+	         React.createElement("input", {type: "text", ref: "author", placeholder: "Type your name: "}),
+	         React.createElement("input", {type: "text", ref: "text", placeholder: "Say something: "}),
 	         React.createElement("input", {type: "submit", value: "Post"})
 	       )
 	      )
@@ -14663,7 +14663,7 @@
 	 *
 	 * @providesModule shallowEqual
 	 * @typechecks
-	 * 
+	 *
 	 */
 
 	'use strict';

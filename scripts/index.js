@@ -1,6 +1,6 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const $ = require('jquery');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 const Comment = React.createClass({
   getInitialState: function() {

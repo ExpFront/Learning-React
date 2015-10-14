@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './index.js',
+  entry: './scripts/index.js',
   output: {
     path: __dirname,
     filename: '../build/index.js'
@@ -7,8 +7,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
-        loader: 'jsx-loader?harmony'
+        test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'
       }
     ]
   }

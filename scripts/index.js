@@ -74,9 +74,10 @@ const CommentList = React.createClass({
     e.preventDefault();
     const innerAuthor = this.refs.author.value.trim();
     const innerText = this.refs.text.value.trim();
+    const newId = this.props.id + 1;
     if (!innerAuthor || !innerText) return;
-
-    this.props.handleSubmitRequest({author: innerAuthor, text: innerText, id: this.context.id++});
+    
+    this.props.handleSubmitRequest({author: innerAuthor, text: innerText, id: newId});
 
     this.refs.author.value = '';
     this.refs.text.value = '';

@@ -6,7 +6,6 @@ const Comment = React.createClass({
   getInitialState() {
     return {data: []};
   },
-
   componentWillMount() {
     this.loadComponents();
   },
@@ -18,10 +17,10 @@ const Comment = React.createClass({
       cache: false,
       success(data) {
         this.setState({data: data});
-      },
-      error(xhr, status, err) {
+      }.bind(this),
+      error: (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
-      }
+      }.bind(this)
     });
   },
 
@@ -33,12 +32,12 @@ const Comment = React.createClass({
       dataType: 'json',
       type: 'HEAD',
       cache: false,
-      success(data) {
+      success: (data) {
         this.setState({data: this.state.data});
-      },
+      }.bind(this),
       error(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
-      }
+      }.bind(this)
     });
   },
 
@@ -86,13 +85,15 @@ const CommentList = React.createClass({
     return;
   },
 
-  render() {
+  render: {
     return (
+      <div>
         <form className="dataField" onSubmit={this.handleSubmit}>
          <input type="text" ref="author" placeholder="Type your name: " />
          <input type="text" ref="text" placeholder="Say something: " />
          <input type="submit" value="Post" />
        </form>
+      </div>
     );
   }
 });

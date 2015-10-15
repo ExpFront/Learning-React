@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import CommentShowData from './components/comments/ShowData.jsx';
-import CommentList from './components/comments/List.jsx';
+import CommentShowData from './components/comments/showData.jsx';
+import CommentList from './components/comments/list.jsx';
 
 
 class Comment extends React.Component {

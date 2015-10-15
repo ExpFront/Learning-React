@@ -10,13 +10,14 @@ const Comment = React.createClass({
   componentWillMount() {
     this.loadComponents();
   },
+
   loadComponents() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
       cache: false,
-      success(data) {
-        this.setState({data: data});
+      success: (data) => {
+        this.setState({data});
       },
       error(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -32,12 +33,12 @@ const Comment = React.createClass({
       dataType: 'json',
       type: 'HEAD',
       cache: false,
-      success(data) {
+      success: () => {
         this.setState({data: this.state.data});
       },
       error(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
-      }
+      },
     });
   },
 
@@ -48,9 +49,8 @@ const Comment = React.createClass({
         <CommentList id={this.state.data.length} handleSubmitRequest={this.handleSubmitRequest} />
       </div>
     )
-  }
+  },
 });
-
 
 const ShowDatas = React.createClass({
   render() {
@@ -63,15 +63,12 @@ const ShowDatas = React.createClass({
         }
       </div>
     );
-  }
+  },
 });
 
-
-
-
 const CommentList = React.createClass({
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
     const innerAuthor = this.refs.author.value.trim();
     const innerText = this.refs.text.value.trim();
     const newId = this.props.id + 1;
@@ -97,8 +94,6 @@ const CommentList = React.createClass({
     );
   }
 });
-
-
 
 ReactDOM.render(
   <Comment url="datas.json" />,

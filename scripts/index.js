@@ -41,13 +41,14 @@ const Comment = React.createClass({
       }
     });
   },
+
   render() {
     return (
      <div>
         <ShowDatas data={this.state.data} />
         <CommentList id={this.state.data.length} handleSubmitRequest={this.handleSubmitRequest} />
       </div>
-    );
+    )
   }
 });
 
@@ -70,8 +71,8 @@ const ShowDatas = React.createClass({
 
 
 const CommentList = React.createClass({
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
+    e.preventDefault();
     const innerAuthor = this.refs.author.value.trim();
     const innerText = this.refs.text.value.trim();
     const newId = this.props.id + 1;

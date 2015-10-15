@@ -1,8 +1,5 @@
 module.exports = {
-  entry: {
-    app: './scripts/index.jsx',
-    vendors: ['react']
-  },
+  entry: './scripts/index.jsx',
   output: {
     path: __dirname,
     filename: './build/index.js'

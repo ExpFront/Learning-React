@@ -1,3 +1,4 @@
+import React from 'react';
 class CommentShowData extends React.Component{
 render() {
   return (

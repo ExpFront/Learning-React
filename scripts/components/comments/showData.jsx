@@ -1,4 +1,4 @@
-class CommentShowData extends React.Component{
+export default class CommentShowData extends React.Component{
 render() {
   return (
     <div>

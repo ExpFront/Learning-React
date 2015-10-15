@@ -29024,8 +29024,8 @@
 	      return;
 	    }
 	  }, {
-	    key: 'renders',
-	    value: function renders() {
+	    key: 'render',
+	    value: function render() {
 	      return _react2['default'].createElement(
 	        'form',
 	        { className: 'dataField', onSubmit: this.handleSubmit },

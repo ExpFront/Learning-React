@@ -56,8 +56,6 @@ class Comment extends React.Component {
   }
 }
 
-
-
 ReactDOM.render(
   <Comment url="datas.json" />,
   document.getElementById('content')

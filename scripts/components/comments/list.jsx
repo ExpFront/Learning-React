@@ -17,7 +17,7 @@ export default class CommentList extends React.Component{
     return;
   }
 
-  renders() {
+  render() {
     return (
         <form className="dataField" onSubmit={this.handleSubmit}>
          <input type="text" ref="author" placeholder="Type your name: " />

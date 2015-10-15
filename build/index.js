@@ -93,7 +93,7 @@
 	      dataType: 'json',
 	      type: 'HEAD',
 	      cache: false,
-	      success: function success() {
+	      success: function success(data) {
 	        this.setState({ data: this.state.data });
 	      },
 	      error: function error(xhr, status, err) {
@@ -101,7 +101,6 @@
 	      }
 	    });
 	  },
-
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',

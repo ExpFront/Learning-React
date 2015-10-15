@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import CommentShowData from './components/comments/showData.jsx';

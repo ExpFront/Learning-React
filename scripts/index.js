@@ -3,28 +3,28 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
 const Comment = React.createClass({
-  getInitialState() {
+  getInitialState: function() {
     return {data: []};
   },
-  componentWillMount() {
+
+  componentWillMount: function() {
     this.loadComponents();
   },
-
-  loadComponents() {
+  loadComponents: function() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
       cache: false,
-      success(data) {
+      success: function(data) {
         this.setState({data: data});
       }.bind(this),
-      error: (xhr, status, err) {
+      error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
   },
 
-  handleSubmitRequest(comment) {
+  handleSubmitRequest: function(comment) {
     const newData = this.state.data.concat([comment]);
     this.setState({data: newData});
     $.ajax({
@@ -32,16 +32,16 @@ const Comment = React.createClass({
       dataType: 'json',
       type: 'HEAD',
       cache: false,
-      success: (data) {
+      success: function(data) {
         this.setState({data: this.state.data});
       }.bind(this),
-      error(xhr, status, err) {
+      error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
   },
 
-  render() {
+  render: function() {
     return (
      <div>
         <ShowDatas data={this.state.data} />
@@ -53,13 +53,13 @@ const Comment = React.createClass({
 
 
 const ShowDatas = React.createClass({
-  render() {
+  render: function() {
     return (
       <div>
         {
-          this.props.data.map(
-            node => <h2 key={node.id}>{node.author} said: {node.text}</h2>
-          )
+          this.props.data.map(function(node) {
+            return <h2 key={node.id}>{node.author} said: {node.text}</h2>
+          })
         }
       </div>
     );
@@ -70,7 +70,7 @@ const ShowDatas = React.createClass({
 
 
 const CommentList = React.createClass({
-  handleSubmit() {
+  handleSubmit: function(e) {
     e.preventDefault();
     const innerAuthor = this.refs.author.value.trim();
     const innerText = this.refs.text.value.trim();
@@ -85,7 +85,7 @@ const CommentList = React.createClass({
     return;
   },
 
-  render: {
+  render: function() {
     return (
       <div>
         <form className="dataField" onSubmit={this.handleSubmit}>

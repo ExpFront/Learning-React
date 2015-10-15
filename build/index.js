@@ -70,18 +70,17 @@
 	  componentWillMount: function componentWillMount() {
 	    this.loadComponents();
 	  },
-
 	  loadComponents: function loadComponents() {
 	    _jquery2['default'].ajax({
 	      url: this.props.url,
 	      dataType: 'json',
 	      cache: false,
-	      success: function success(data) {
+	      success: (function (data) {
 	        this.setState({ data: data });
-	      },
-	      error: function error(xhr, status, err) {
+	      }).bind(this),
+	      error: (function (xhr, status, err) {
 	        console.error(this.props.url, status, err.toString());
-	      }
+	      }).bind(this)
 	    });
 	  },
 
@@ -93,14 +92,15 @@
 	      dataType: 'json',
 	      type: 'HEAD',
 	      cache: false,
-	      success: function success(data) {
+	      success: (function (data) {
 	        this.setState({ data: this.state.data });
-	      },
-	      error: function error(xhr, status, err) {
+	      }).bind(this),
+	      error: (function (xhr, status, err) {
 	        console.error(this.props.url, status, err.toString());
-	      }
+	      }).bind(this)
 	    });
 	  },
+
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
@@ -134,8 +134,8 @@
 	var CommentList = _react2['default'].createClass({
 	  displayName: 'CommentList',
 
-	  handleSubmit: function handleSubmit(event) {
-	    event.preventDefault();
+	  handleSubmit: function handleSubmit(e) {
+	    e.preventDefault();
 	    var innerAuthor = this.refs.author.value.trim();
 	    var innerText = this.refs.text.value.trim();
 	    var newId = this.props.id + 1;
@@ -151,11 +151,15 @@
 
 	  render: function render() {
 	    return _react2['default'].createElement(
-	      'form',
-	      { className: 'dataField', onSubmit: this.handleSubmit },
-	      _react2['default'].createElement('input', { type: 'text', ref: 'author', placeholder: 'Type your name: ' }),
-	      _react2['default'].createElement('input', { type: 'text', ref: 'text', placeholder: 'Say something: ' }),
-	      _react2['default'].createElement('input', { type: 'submit', value: 'Post' })
+	      'div',
+	      null,
+	      _react2['default'].createElement(
+	        'form',
+	        { className: 'dataField', onSubmit: this.handleSubmit },
+	        _react2['default'].createElement('input', { type: 'text', ref: 'author', placeholder: 'Type your name: ' }),
+	        _react2['default'].createElement('input', { type: 'text', ref: 'text', placeholder: 'Say something: ' }),
+	        _react2['default'].createElement('input', { type: 'submit', value: 'Post' })
+	      )
 	    );
 	  }
 	});

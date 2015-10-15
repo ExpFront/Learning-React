@@ -74,15 +74,11 @@
 	  function Comment() {
 	    _classCallCheck(this, Comment);
 
-	    _get(Object.getPrototypeOf(Comment.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Comment.prototype), 'constructor', this).call(this);
+	    this.state = { data: [] };
 	  }
 
 	  _createClass(Comment, [{
-	    key: 'getInitialState',
-	    value: function getInitialState() {
-	      return { data: [] };
-	    }
-	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.loadComponents();

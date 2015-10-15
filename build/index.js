@@ -46,7 +46,15 @@
 
 	'use strict';
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(1);
 
@@ -60,114 +68,152 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var Comment = _react2['default'].createClass({
-	  displayName: 'Comment',
+	var Comment = (function (_React$Component) {
+	  _inherits(Comment, _React$Component);
 
-	  getInitialState: function getInitialState() {
-	    return { data: [] };
-	  },
+	  function Comment() {
+	    _classCallCheck(this, Comment);
 
-	  componentWillMount: function componentWillMount() {
-	    this.loadComponents();
-	  },
-
-	  loadComponents: function loadComponents() {
-	    var _this = this;
-
-	    _jquery2['default'].ajax({
-	      url: this.props.url,
-	      dataType: 'json',
-	      cache: false,
-	      success: function success(data) {
-	        _this.setState({ data: data });
-	      },
-	      error: function error(xhr, status, err) {
-	        console.error(this.props.url, status, err.toString());
-	      }
-	    });
-	  },
-
-	  handleSubmitRequest: function handleSubmitRequest(comment) {
-	    var _this2 = this;
-
-	    var newData = this.state.data.concat([comment]);
-	    this.setState({ data: newData });
-	    _jquery2['default'].ajax({
-	      url: this.props.url,
-	      dataType: 'json',
-	      type: 'HEAD',
-	      cache: false,
-	      success: function success() {
-	        _this2.setState({ data: _this2.state.data });
-	      },
-	      error: function error(xhr, status, err) {
-	        console.error(this.props.url, status, err.toString());
-	      }
-	    });
-	  },
-
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      null,
-	      _react2['default'].createElement(ShowDatas, { data: this.state.data }),
-	      _react2['default'].createElement(CommentList, { id: this.state.data.length, handleSubmitRequest: this.handleSubmitRequest })
-	    );
+	    _get(Object.getPrototypeOf(Comment.prototype), 'constructor', this).apply(this, arguments);
 	  }
-	});
 
-	var ShowDatas = _react2['default'].createClass({
-	  displayName: 'ShowDatas',
+	  _createClass(Comment, [{
+	    key: 'getInitialState',
+	    value: function getInitialState() {
+	      return { data: [] };
+	    }
+	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.loadComponents();
+	    }
+	  }, {
+	    key: 'loadComponents',
+	    value: function loadComponents() {
+	      var _this = this;
 
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      null,
-	      this.props.data.map(function (node) {
-	        return _react2['default'].createElement(
-	          'h2',
-	          { key: node.id },
-	          node.author,
-	          ' said: ',
-	          node.text
-	        );
-	      })
-	    );
+	      _jquery2['default'].ajax({
+	        url: this.props.url,
+	        dataType: 'json',
+	        cache: false,
+	        success: function success(data) {
+	          _this.setState({ data: data });
+	        },
+	        error: function error(xhr, status, err) {
+	          console.error(this.props.url, status, err.toString());
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'handleSubmitRequest',
+	    value: function handleSubmitRequest(comment) {
+	      var _this2 = this;
+
+	      var newData = this.state.data.concat([comment]);
+	      this.setState({ data: newData });
+	      _jquery2['default'].ajax({
+	        url: this.props.url,
+	        dataType: 'json',
+	        type: 'HEAD',
+	        cache: false,
+	        success: function success() {
+	          _this2.setState({ data: _this2.state.data });
+	        },
+	        error: function error(xhr, status, err) {
+	          console.error(this.props.url, status, err.toString());
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        _react2['default'].createElement(ShowDatas, { data: this.state.data }),
+	        _react2['default'].createElement(CommentList, { id: this.state.data.length, handleSubmitRequest: this.handleSubmitRequest })
+	      );
+	    }
+	  }]);
+
+	  return Comment;
+	})(_react2['default'].Component);
+
+	var ShowDatas = (function (_React$Component2) {
+	  _inherits(ShowDatas, _React$Component2);
+
+	  function ShowDatas() {
+	    _classCallCheck(this, ShowDatas);
+
+	    _get(Object.getPrototypeOf(ShowDatas.prototype), 'constructor', this).apply(this, arguments);
 	  }
-	});
 
-	var CommentList = _react2['default'].createClass({
-	  displayName: 'CommentList',
+	  _createClass(ShowDatas, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        this.props.data.map(function (node) {
+	          return _react2['default'].createElement(
+	            'h2',
+	            { key: node.id },
+	            node.author,
+	            ' said: ',
+	            node.text
+	          );
+	        })
+	      );
+	    }
+	  }]);
 
-	  handleSubmit: function handleSubmit(event) {
-	    event.preventDefault();
-	    var innerAuthor = this.refs.author.value.trim();
-	    var innerText = this.refs.text.value.trim();
-	    var newId = this.props.id + 1;
-	    if (!innerAuthor || !innerText) return;
+	  return ShowDatas;
+	})(_react2['default'].Component);
 
-	    this.props.handleSubmitRequest({ author: innerAuthor, text: innerText, id: newId });
+	var CommentList = (function (_React$Component3) {
+	  _inherits(CommentList, _React$Component3);
 
-	    this.refs.author.value = '';
-	    this.refs.text.value = '';
+	  function CommentList() {
+	    _classCallCheck(this, CommentList);
 
-	    return;
-	  },
-
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      null,
-	      _react2['default'].createElement(
-	        'form',
-	        { className: 'dataField', onSubmit: this.handleSubmit },
-	        _react2['default'].createElement('input', { type: 'text', ref: 'author', placeholder: 'Type your name: ' }),
-	        _react2['default'].createElement('input', { type: 'text', ref: 'text', placeholder: 'Say something: ' }),
-	        _react2['default'].createElement('input', { type: 'submit', value: 'Post' })
-	      )
-	    );
+	    _get(Object.getPrototypeOf(CommentList.prototype), 'constructor', this).apply(this, arguments);
 	  }
-	});
+
+	  _createClass(CommentList, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+	      event.preventDefault();
+	      var innerAuthor = this.refs.author.value.trim();
+	      var innerText = this.refs.text.value.trim();
+	      var newId = this.props.id + 1;
+	      if (!innerAuthor || !innerText) return;
+
+	      this.props.handleSubmitRequest({ author: innerAuthor, text: innerText, id: newId });
+
+	      this.refs.author.value = '';
+	      this.refs.text.value = '';
+
+	      return;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        _react2['default'].createElement(
+	          'form',
+	          { className: 'dataField', onSubmit: this.handleSubmit },
+	          _react2['default'].createElement('input', { type: 'text', ref: 'author', placeholder: 'Type your name: ' }),
+	          _react2['default'].createElement('input', { type: 'text', ref: 'text', placeholder: 'Say something: ' }),
+	          _react2['default'].createElement('input', { type: 'submit', value: 'Post' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return CommentList;
+	})(_react2['default'].Component);
 
 	_reactDom2['default'].render(_react2['default'].createElement(Comment, { url: 'datas.json' }), document.getElementById('content'));
 

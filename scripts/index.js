@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
-const Comment = React.createClass({
+class Comment extends React.Component {
   getInitialState() {
     return {data: []};
-  },
+  }
 
   componentWillMount() {
     this.loadComponents();
@@ -21,9 +21,9 @@ const Comment = React.createClass({
       },
       error(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
-      }
+      },
     });
-  },
+  }
 
   handleSubmitRequest(comment) {
     const newData = this.state.data.concat([comment]);
@@ -40,7 +40,7 @@ const Comment = React.createClass({
         console.error(this.props.url, status, err.toString());
       },
     });
-  },
+  }
 
   render() {
     return (
@@ -48,25 +48,25 @@ const Comment = React.createClass({
         <ShowDatas data={this.state.data} />
         <CommentList id={this.state.data.length} handleSubmitRequest={this.handleSubmitRequest} />
       </div>
-    )
-  },
-});
+    );
+  }
+}
 
-const ShowDatas = React.createClass({
-  render() {
-    return (
-      <div>
-        {
-          this.props.data.map(
-            node => <h2 key={node.id}>{node.author} said: {node.text}</h2>
-          )
-        }
+class ShowDatas extends React.Component{
+render() {
+  return (
+    <div>
+      {
+        this.props.data.map(
+          node => <h2 key={node.id}>{node.author} said: {node.text}</h2>
+        )
+      }
       </div>
     );
-  },
-});
+  }
+}
 
-const CommentList = React.createClass({
+class CommentList extends React.Component{
   handleSubmit(event) {
     event.preventDefault();
     const innerAuthor = this.refs.author.value.trim();
@@ -80,7 +80,7 @@ const CommentList = React.createClass({
     this.refs.text.value = '';
 
     return;
-  },
+  }
 
   render() {
     return (
@@ -93,7 +93,7 @@ const CommentList = React.createClass({
       </div>
     );
   }
-});
+}
 
 ReactDOM.render(
   <Comment url="datas.json" />,

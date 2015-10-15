@@ -33,7 +33,7 @@ const Comment = React.createClass({
       dataType: 'json',
       type: 'HEAD',
       cache: false,
-      success() {
+      success(data) {
         this.setState({data: this.state.data});
       },
       error(xhr, status, err) {
@@ -41,14 +41,13 @@ const Comment = React.createClass({
       }
     });
   },
-
   render() {
     return (
      <div>
         <ShowDatas data={this.state.data} />
         <CommentList id={this.state.data.length} handleSubmitRequest={this.handleSubmitRequest} />
       </div>
-    )
+    );
   }
 });
 

@@ -30,7 +30,7 @@ class Comment extends React.Component {
   }
 
   handleSubmitRequest(comment) {
-    const newData = this.state.data.concat([comment]).bind(this);
+    const newData = this.state.data.concat([comment]);
     this.setState({data: newData});
     $.ajax({
       url: this.props.url,
@@ -50,7 +50,7 @@ class Comment extends React.Component {
     return (
      <div>
         <CommentShowData data={this.state.data} />
-        <CommentList id={this.state.data.length.bind(this)} handleSubmitRequest={this.handleSubmitRequest.bind(this)} />
+        <CommentList id={this.state.data.length} handleSubmitRequest={this.handleSubmitRequest.bind(this)} />
       </div>
     );
   }

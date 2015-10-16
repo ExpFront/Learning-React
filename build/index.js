@@ -113,7 +113,7 @@
 	    value: function handleSubmitRequest(comment) {
 	      var _this2 = this;
 
-	      var newData = this.state.data.concat([comment]).bind(this);
+	      var newData = this.state.data.concat([comment]);
 	      this.setState({ data: newData });
 	      _jquery2['default'].ajax({
 	        url: this.props.url,
@@ -135,7 +135,7 @@
 	        'div',
 	        null,
 	        _react2['default'].createElement(_componentsCommentsShowDataJsx2['default'], { data: this.state.data }),
-	        _react2['default'].createElement(_componentsCommentsListJsx2['default'], { id: this.state.data.length.bind(this), handleSubmitRequest: this.handleSubmitRequest.bind(this) })
+	        _react2['default'].createElement(_componentsCommentsListJsx2['default'], { id: this.state.data.length, handleSubmitRequest: this.handleSubmitRequest.bind(this) })
 	      );
 	    }
 	  }]);

@@ -20,7 +20,7 @@ export default class CommentList extends React.Component {
 
   render() {
     return (
-      <form className="dataField" onSubmit={this.handleSubmit.bind(this)}>
+      <form className="dataField" onSubmit={this.handleSubmit}>
          <input type="text" ref="author" placeholder="Type your name: " />
          <input type="text" ref="text" placeholder="Say something: " />
          <input type="submit" value="Post" />

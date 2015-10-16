@@ -29028,7 +29028,7 @@
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'form',
-	        { className: 'dataField', onSubmit: this.handleSubmit },
+	        { className: 'dataField', onSubmit: this.handleSubmit.bind(this) },
 	        _react2['default'].createElement('input', { type: 'text', ref: 'author', placeholder: 'Type your name: ' }),
 	        _react2['default'].createElement('input', { type: 'text', ref: 'text', placeholder: 'Say something: ' }),
 	        _react2['default'].createElement('input', { type: 'submit', value: 'Post' })

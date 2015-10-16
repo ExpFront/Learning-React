@@ -49,7 +49,7 @@ class Comment extends React.Component {
   render() {
     return (
      <div>
-        <CommentShowData data={this.state.data.bind(this)} />
+        <CommentShowData data={this.state.data} />
         <CommentList id={this.state.data.length.bind(this)} handleSubmitRequest={this.handleSubmitRequest.bind(this)} />
       </div>
     );

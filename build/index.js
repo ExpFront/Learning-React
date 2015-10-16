@@ -134,7 +134,7 @@
 	      return _react2['default'].createElement(
 	        'div',
 	        null,
-	        _react2['default'].createElement(_componentsCommentsShowDataJsx2['default'], { data: this.state.data.bind(this) }),
+	        _react2['default'].createElement(_componentsCommentsShowDataJsx2['default'], { data: this.state.data }),
 	        _react2['default'].createElement(_componentsCommentsListJsx2['default'], { id: this.state.data.length.bind(this), handleSubmitRequest: this.handleSubmitRequest.bind(this) })
 	      );
 	    }

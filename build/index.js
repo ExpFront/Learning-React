@@ -28932,10 +28932,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(157);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
 	var CommentShowData = (function (_React$Component) {
 	  _inherits(CommentShowData, _React$Component);
 
@@ -28993,10 +28989,6 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(157);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
 
 	var CommentList = (function (_React$Component) {
 	  _inherits(CommentList, _React$Component);

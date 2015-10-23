@@ -98,7 +98,7 @@
 	      var _this = this;
 
 	      _jquery2['default'].ajax({
-	        url: './../langObject.json',
+	        url: './langObject.json',
 	        dataType: 'json',
 	        cache: false,
 	        success: function success(appData) {
@@ -19829,7 +19829,7 @@
 				var _this = this;
 
 				$.ajax({
-					url: './../langObject.json',
+					url: './../../langObject.json',
 					dataType: 'json',
 					cache: false,
 					success: function success(data) {

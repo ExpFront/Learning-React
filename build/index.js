@@ -98,11 +98,7 @@
 	      var _this = this;
 
 	      _jquery2['default'].ajax({
-<<<<<<< HEAD
 	        url: 'langObject.json',
-=======
-	        url: './../langObject.json',
->>>>>>> parent of 371b0d9... Final
 	        dataType: 'json',
 	        cache: false,
 	        success: function success(appData) {
@@ -19833,11 +19829,7 @@
 				var _this = this;
 
 				$.ajax({
-<<<<<<< HEAD
 					url: 'langObject.json',
-=======
-					url: './../langObject.json',
->>>>>>> parent of 371b0d9... Final
 					dataType: 'json',
 					cache: false,
 					success: function success(data) {

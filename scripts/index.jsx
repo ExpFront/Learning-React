@@ -17,11 +17,7 @@ class SearchForm extends React.Component {
   }
   loadComponents() {
 		$.ajax({
-<<<<<<< HEAD
 			url: 'langObject.json',
-=======
-			url: './../langObject.json',
->>>>>>> parent of 371b0d9... Final
 			dataType: 'json',
 			cache: false,
 			success: (appData) => {

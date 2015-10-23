@@ -19829,7 +19829,7 @@
 				var _this = this;
 
 				$.ajax({
-					url: './../../langObject.json',
+					url: './../langObject.json',
 					dataType: 'json',
 					cache: false,
 					success: function success(data) {

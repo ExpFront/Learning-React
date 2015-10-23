@@ -15,7 +15,7 @@ var NotesList = React.createClass({
 						);
 					})
 				}
-			</div>	
+			</div>
 		);
 	}
 });
@@ -54,7 +54,7 @@ var SubmitNote = React.createClass({
 				</form>
 				<NotesList />
 			</div>
-			
+
 		)
 	}
 });
@@ -67,10 +67,3 @@ var load = function() {
 };
 
 load();
-
-
-
-
-
-
-

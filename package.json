@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "node webpack.config.dev.js",
     "start": "node webpack.server.dev.js"
   },
   "author": "ExpFront",

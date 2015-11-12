@@ -1,2 +1,2 @@
 # Learning-React
-Stack: JSX, React, ES6, Babel, Webpack
+Stack: JSX, React, Redux, ES6, Babel, Webpack

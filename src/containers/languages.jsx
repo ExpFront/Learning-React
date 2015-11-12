@@ -78,7 +78,6 @@ class Landing extends React.Component {
   }
 
   render() {
-    console.log(this.props.languages);
     return (
       <div>
         <section className="section-intro">

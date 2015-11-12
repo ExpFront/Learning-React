@@ -21573,7 +21573,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props.languages);
 	      return _react2['default'].createElement(
 	        'div',
 	        null,
@@ -30993,8 +30992,6 @@
 	  });
 	}), _defineProperty(_handleActions, _constantsLanguages.HIDE_LIST, function (state, action) {
 	  var filtered = action.data;
-
-	  console.log(filtered);
 
 	  return _extends({}, state, {
 	    filtered: filtered

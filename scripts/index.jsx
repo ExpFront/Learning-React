@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchMenu from './components/search/menu.jsx';
-import SearchData from './components/search/data.jsx';
+import FormComponent from './components/Form.react.jsx'
+import MenuComponent from './components/Menu.react.jsx';
+import DataComponent from './components/Data.react.jsx';
+import LanguageData from './LanguageData.js';
+import MenuAPI from './utils/MenuAPI';
 import $ from 'jquery';
 
-class SearchForm extends React.Component {
+/*class SearchForm extends React.Component {
   constructor() {
     super();
     this.state = { innerValue: null};
@@ -45,7 +48,7 @@ class SearchForm extends React.Component {
   setNewInnerValue(newInnerValue) {
     this.refs.innerValue.value = newInnerValue;
   }
-
+/*
   handleSubmit(e) {
     e.preventDefault();
     if (this.state.newObj) {
@@ -64,8 +67,8 @@ class SearchForm extends React.Component {
         })
       }
     }
-  }
-
+  }*/
+/*
   passData(newText) {
     this.setState({ newObj: newText })
   }
@@ -109,15 +112,14 @@ class SearchForm extends React.Component {
     )
   }
 }
+*/
+
+LanguageData.init();
+MenuAPI.getLanguageData();
 
 ReactDOM.render(
-  <SearchForm />,
+  <div>
+    <FormComponent />
+  </div>,
   document.getElementsByClassName('entry')[0]
-)
-
-
-
-
-// What if the user whats to delete previous values? It will stop at 3 chars in render.
-
-//Via input value? pass it to the child, get back changed and changes value
+);

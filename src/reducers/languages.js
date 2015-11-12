@@ -51,8 +51,6 @@ const languages = handleActions({
   [HIDE_LIST]: (state, action) => {
     const filtered = action.data;
 
-    console.log(filtered);
-
     return {
       ...state,
       filtered,
